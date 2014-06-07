@@ -16,14 +16,7 @@ If you have any comments or suggestions, feel free to give me a shout [on Twitte
 - [iTerm2](#iterm2)
 - [Git](#git)
 - [Sublime Text](#sublime-text)
-- [Vim](#vim)
-- [Python](#python)
-- [Virtualenv](#virtualenv)
-- [IPython](#ipython)
-- [Numpy and Scipy](#numpy-and-scipy)
-- [MySQL](#mysql)
 - [Node.js](#nodejs)
-- [Ruby and RVM](#ruby-and-rvm)
 - [LESS](#less)
 - [Heroku](#heroku)
 - [MongoDB](#mongodb)
@@ -77,9 +70,9 @@ An important dependency before Homebrew can work is the **Command Line Tools** f
 
 Now, Xcode weights something like 2GB, and you don't need it unless you're developing iPhone or Mac apps. Good news is Apple provides a way to install only the Command Line Tools, without Xcode. To do this you need to go to [http://developer.apple.com/downloads](http://developer.apple.com/downloads), and sign in with your Apple ID (the same one you use for iTunes and app purchases). Unfortunately, you're greeted by a rather annoying questionnaire. All questions are required, so feel free to answer at random.
 
-Once you reach the downloads page, search for "command line tools", and download the latest **Command Line Tools (OS X Mountain Lion) for Xcode**. Open the **.dmg** file once it's done downloading, and double-click on the **.mpkg** installer to launch the installation. When it's done, you can unmount the disk in Finder.
+If running Mavericks+, install via terminal
 
-**Note**: If you are running **OS X 10.9 Mavericks**, then you can install the Xcode Command Line Tools directly from the command line with `$ xcode-select --install`, and you don't have to go through the download page and the questionnaire.
+    $ xcode-select --install
 
 Finally, we can install Hombrew! In the terminal paste the following line (without the `$`), hit **Enter**, and follow the steps on the screen:
 
@@ -161,12 +154,12 @@ Scroll down the page and download the latest version. Unzip the archive. In it y
 
 Not a lot of colors yet. We need to tweak a little bit our Unix user's profile for that. This is done (on OS X and Linux), in the `~/.bash_profile` text file (`~` stands for the user's home directory).
 
-We'll come back to the details of that later, but for now, just download the files [.bash_profile](https://raw.github.com/nicolashery/mac-dev-setup/master/.bash_profile), [.bash_prompt](https://raw.github.com/nicolashery/mac-dev-setup/master/.bash_prompt), [.aliases](https://raw.github.com/nicolashery/mac-dev-setup/master/.aliases) attached to this document into your home directory (`.bash_profile` is the one that gets loaded, I've set it up to call the others):
+We'll come back to the details of that later, but for now, just download the files [.bash_profile](https://raw.github.com/rfvgyhn/mac-dev-setup/master/.bash_profile), [.bash_prompt](https://raw.github.com/rfvgyhn/mac-dev-setup/master/.bash_prompt), [.aliases](https://raw.github.com/rfvgyhn/mac-dev-setup/master/.aliases) attached to this document into your home directory (`.bash_profile` is the one that gets loaded, I've set it up to call the others):
 
     $ cd ~
-    $ curl -O https://raw.github.com/nicolashery/mac-dev-setup/master/.bash_profile
-    $ curl -O https://raw.github.com/nicolashery/mac-dev-setup/master/.bash_prompt
-    $ curl -O https://raw.github.com/nicolashery/mac-dev-setup/master/.aliases
+    $ curl -O https://raw.github.com/rfvgyhn/mac-dev-setup/master/.bash_profile
+    $ curl -O https://raw.github.com/rfvgyhn/mac-dev-setup/master/.bash_prompt
+    $ curl -O https://raw.github.com/rfvgyhn/mac-dev-setup/master/.aliases
     
 With that, open a new terminal tab (Cmd+T) and see the change! Try the list commands: `ls`, `ls -lh` (aliased to `ll`), `ls -lha` (aliased to `la`).
 
@@ -191,7 +184,7 @@ And `$ which git` should output `/usr/local/bin/git`.
 Let's set up some basic configuration. Download the [.gitconfig](/nicolahery/mac-dev-setup/blob/master/.gitconfig) file to your home directory:
 
     $ cd ~
-    $ curl -O https://raw.github.com/nicolashery/mac-dev-setup/master/.gitconfig
+    $ curl -O https://raw.github.com/rfvgyhn/mac-dev-setup/master/.gitconfig
 
 It will add some color to the `status`, `branch`, and `diff` Git commands, as well as a couple aliases. Feel free to take a look at the contents of the file, and add to it to your liking.
 
@@ -224,14 +217,10 @@ Just like the terminal, let's configure our editor a little. Go to **Sublime Tex
 {
     "font_face": "Consolas",
     "font_size": 13,
-    "rulers":
-    [
-        79
-    ],
     "highlight_line": true,
     "bold_folder_labels": true,
     "highlight_modified_tabs": true,
-    "tab_size": 2,
+    "tab_size": 4,
     "translate_tabs_to_spaces": true,
     "word_wrap": false,
     "indent_to_bracket": true
@@ -239,39 +228,6 @@ Just like the terminal, let's configure our editor a little. Go to **Sublime Tex
 ```
     
 Feel free to tweak these to your preference. When done, save the file and close it.
-
-I use tab size 2 for everything except Python and Markdown files, where I use tab size 4. If you have a Python and Markdown file handy (or create dummy ones with `$ touch dummy.py`), for each one, open it and go to **Sublime Text 2 > Preferences > Settings - More > Syntax Specific - User** to paste in:
-
-```json
-{
-    "tab_size": 4
-}
-```
-
-Now for the color. I'm going to change two things: the **Theme** (which is how the tabs, the file explorer on the left, etc. look) and the **Color Scheme** (the colors of the code). Again, feel free to pick different ones, or stick with the default.
-
-A popular Theme is the [Soda Theme](https://github.com/buymeasoda/soda-theme). To install it, run:
-
-    $ cd ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/
-    $ git clone https://github.com/buymeasoda/soda-theme/ "Theme - Soda"
-    
-Then go to **Sublime Text 2 > Preferences > Settings - User** and add the following two lines:
-
-    "theme": "Soda Dark.sublime-theme",
-    "soda_classic_tabs": true
-
-Restart Sublime Text for all changes to take affect (Note: on the Mac, closing all windows doesn't close the application, you need to hit **Cmd+Q**).
-
-The Soda Theme page also offers some [extra color schemes](https://github.com/buymeasoda/soda-theme#syntax-highlighting-colour-schemes) you can download and try. But to be consistent with my terminal, I like to use the **Solarized** Color Scheme, which already ships with Sublime Text. To use it, just go to **Sublime Text 2 > Preferences > Color Scheme > Solarized (Dark)**. Again, this is really according to personal flavors, so pick what you want.
-
-Sublime Text 2 already supports syntax highlighting for a lot of languages. I'm going to install a couple that are missing:
-
-    $ cd ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/
-    $ git clone https://github.com/jashkenas/coffee-script-tmbundle CoffeeScript
-    $ git clone https://github.com/miksago/jade-tmbundle Jade
-    $ git clone https://github.com/danro/LESS-sublime.git LESS
-    $ git clone -b SublimeText2 https://github.com/kuroir/SCSS.tmbundle.git SCSS
-    $ git clone https://github.com/nrw/sublime-text-handlebars Handlebars
 
 Let's create a shortcut so we can launch Sublime Text from the command-line:
 
@@ -283,247 +239,13 @@ Now I can open a file with `$ subl myfile.py` or start a new project in the curr
 
 Sublime Text is very extensible. For now we'll leave it like that, we already have a solid installation. To add more in the future, a good place to start would be to install the [Sublime Package Control](http://wbond.net/sublime_packages/package_control/installation).
 
-## Vim
-
-Although Sublime Text will be our main editor, it is a good idea to learn some very basic usage of [Vim](http://www.vim.org/). It is a very popular text editor inside the terminal, and is usually pre-installed on any Unix system.
-
-For example, when you run a Git commit, it will open Vim to allow you to type the commit message.
-
-I suggest you read a tutorial on Vim. Grasping the concept of the two "modes" of the editor, **Insert** (by pressing `i`) and **Normal** (by pressing `Esc` to exit Insert mode), will be the part that feels most unatural. After that it's just remembering a few important keys.
-
-Vim's default settings aren't great, and you could spend a lot of time tweaking your configuration (the `.vimrc` file). But if you're like me and just use Vim occasionally, you'll be happy to know that [Tim Pope](https://github.com/tpope) has put together some sensible defaults to quickly get started.
-
-First, install [pathogen.vim](https://github.com/tpope/vim-pathogen) by running:
-
-    $ mkdir -p ~/.vim/autoload ~/.vim/bundle
-    $ curl -Sso ~/.vim/autoload/pathogen.vim \
-        https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
-
-Then create a file `~/.vimrc` (you can use `$ subl ~/.vimrc`), and paste in the following:
-
-    execute pathogen#infect()
-    syntax on
-    filetype plugin indent on
-
-And finally, install the Vim "sensible defaults" by running:
-
-    $ cd ~/.vim/bundle
-    $ git clone git://github.com/tpope/vim-sensible.git
-
-With that, Vim will look a lot better next time you open it!
-
-## Python
-
-OS X, like Linux, ships with [Python](http://python.org/) already installed. But you don't want to mess with the system Python (some system tools rely on it, etc.), so we'll install our own version with Homebrew. It will also allow us to get the very latest version of Python 2.7.
-
-The following command will install Python 2.7 and any dependencies required (it can take a few minutes to build everything):
-
-    $ brew install python
-    
-When finished, you should get a summary in the terminal. Running `$ which python` should output `/usr/local/bin/python`.
-
-It also installed [Pip]() (and its dependency [Distribute]()), which is the package manager for Python. Let's upgrade them both:
-
-    $ pip install --upgrade distribute
-    $ pip install --upgrade pip
-    
-Executable scripts from Python packages you install will be put in `/usr/local/share/python`, so let's add it to the `$PATH`. To do so, we'll create a `.path` text file in the home directory (I've already set up `.bash_profile` to call this file):
-
-    $ cd ~
-    $ subl .path
-    
-And add these lines to `.path`:
-
-```bash
-PATH=/usr/local/share/python:$PATH
-export PATH
-```
-    
-Save the file and open a new terminal to take the new `$PATH` into account (everytime you open a terminal, `.bash_profile` gets loaded).
-
-### Pip Usage
-
-Here are a couple Pip commands to get you started. To install a Python package:
-
-    $ pip install <package>
-
-To upgrade a package:
-
-    $ pip install --upgrade <package>
-        
-To see what's installed:
-
-    $ pip freeze
-    
-To uninstall a package:
-
-    $ pip uninstall <package>
-
-## Virtualenv
-
-[Virtualenv](http://www.virtualenv.org/) is a tool that creates an isolated Python environment for each of your projects. For a particular project, instead of installing required packages globally, it is best to install them in an isolated folder in the project (say a folder named `venv`), that will be managed by virtualenv.
-
-The advantage is that different projects might require different versions of packages, and it would be hard to manage that if you install packages globally. It also allows you to keep your global `/usr/local/lib/python2.7/site-packages` folder clean, containing only critical or big packages that you always need (like IPython, Numpy).
-
-### Install
-
-To install virtualenv, simply run:
-
-    $ pip install virtualenv
-
-### Usage
-
-Let's say you have a project in a directory called `myproject`. To set up virtualenv for that project:
-
-    $ cd myproject/
-    $ virtualenv venv --distribute
-    
-If you want your virtualenv to also inherit globally installed packages (like IPython or Numpy mentioned above), use:
-
-    $ virtualenv venv --distribute --system-site-packages
-
-These commands create a `venv` subdirectory in your project where everything is installed. You need to **activate** it first though (in every terminal where you are working on your project):
-
-    $ source venv/bin/activate
-    
-You should see a `(venv)` appear at the beginning of your terminal prompt indicating that you are working inside the virtualenv. Now when you install something:
-
-    $ pip install <package>
-
-It will get installed in the `venv` folder, and not conflict with other projects.
-
-**Important**: Remember to add `venv` to your project's `.gitignore` file so you don't include all of that in your source code!
-
-As mentioned earlier, I like to install big packages (like Numpy), or packages I always use (like IPython) globally. All the rest I install in a virtualenv.
-
-## IPython
-
-[IPython](http://ipython.org/) is an awesome project which provides a much better Python shell than the one you get from running `$ python` in the command-line. It has many cool functions (running Unix commands from the Python shell, easy copy & paste, creating Matplotlib charts in-line, etc.) and I'll let you refer to the [documentation](http://ipython.org/ipython-doc/stable/index.html) to discover them.
-
-### Install
-
-Before we install IPython, we'll need to get some dependencies. Run the following:
-
-    $ brew update # Always good to do
-    $ brew install zeromq # Necessary for pyzmq
-    $ brew install pyqt # Necessary for the qtconsole
-    
-It may take a few minutes to build these.
-
-Once it's done, we can install IPython with all the available options:
-
-    $ pip install ipython[zmq,qtconsole,notebook,test]
-
-### Usage
-
-You can launch IPython from the command line with `$ ipython`, but what's more interesting is to use its [QT Console](http://ipython.org/ipython-doc/stable/interactive/qtconsole.html). Launch the QT Console by running:
-
-    $ ipython qtconsole
-    
-You can also customize the font it uses:
-
-    $ ipython qtconsole --ConsoleWidget.font_family="Consolas" --ConsoleWidget.font_size=13
-    
-And since I'm lazy and I don't want to type or copy & paste that all the time, I'm going to create an alias for it. Create a `.extra` text file in your home directory with `$ subl ~/.extra` (I've set up `.bash_profile` to load `.extra`), and add the following line:
-
-```bash
-alias ipy='ipython qtconsole --ConsoleWidget.font_family="Consolas" --ConsoleWidget.font_size=13'
-```
-    
-Open a fresh terminal. Now when you run `$ ipy`, it will launch the QT Console with your configured options.
-
-To use the in-line Matplotlib functionality (nice for scientific computing), run `$ ipy --pylab=inline`.
-
-## Numpy and Scipy
-
-The [Numpy](http://numpy.scipy.org/) and [Scipy](http://www.scipy.org/SciPy) scientific libraries for Python are always a little tricky to install from source because they have all these dependencies they need to build correctly. Luckily for us, [Samuel John](http://www.samueljohn.de/) has put together some [Homebrew formulae](https://github.com/samueljohn/homebrew-python) to make it easier to install these Python libraries.
-
-First, grab the special formulae (which are not part of Homebrew core):
-
-    $ brew tap samueljohn/python
-    $ brew tap homebrew/science
-    
-Then, install the `gfortran` dependency which we will need to build the libraries:
-
-    $ brew install gfortran
-    
-Finally, you can install Numpy and Scipy with:
-
-    $ brew install numpy
-    $ brew install scipy
-    
-(It may take a few minutes to build.)
-
-## MySQL
-
-### Install
-
-We will install [MySQL](http://www.mysql.com/) using Homebrew, which will also install some header files needed for MySQL bindings in different programming languages (MySQL-Python for one).
-
-To install, run:
-
-    $ brew update # Always good to do
-    $ brew install mysql
-
-As you can see in the ouput from Homebrew, before we can use MySQL we first need to set it up with:
-
-    $ unset TMPDIR
-    $ mkdir /usr/local/var
-    $ mysql_install_db --verbose --user=`whoami` --basedir="$(brew --prefix mysql)" --datadir=/usr/local/var/mysql --tmpdir=/tmp
-
-### Usage
-
-To start the MySQL server, use the `mysql.server` tool:
-
-    $ mysql.server start
-    
-To stop it when you are done, run:
-
-    $ mysql.server stop
-    
-You can see the different commands available for `mysql.server` with:
-
-    $ mysql.server --help
-    
-To connect with the command-line client, run:
-
-    $ mysql -uroot
-    
-(Use `exit` to quit the MySQL shell.)
-
-**Note**: By default, the MySQL user `root` has no password. It doesn't really matter for a local development database. If you wish to change it though, you can use `$ mysqladmin -u root password 'new-password'`.
-
-### MySQL Workbench
-
-In terms of a GUI client for MySQL, I'm used to the official and free [MySQL Workbench](http://www.mysql.com/products/workbench/). But feel free to use whichever you prefer.
-
-You can find the MySQL Workbench download [here](http://www.mysql.com/downloads/workbench/). (**Note**: It will ask you to sign in, you don't need to, just click on "No thanks, just start my download!" at the bottom.)
-
 ## Node.js
 
-Install [Node.js](http://nodejs.org/) with Homebrew:
+Install [Node.js](http://nodejs.org/) via [nvm](https://github.com/creationix/nvm):
 
-    $ brew update
-    $ brew install node
-    
-The formula also installs the [npm](https://npmjs.org/) package manager. However, as suggested by the Homebrew output, we need to add `/usr/local/share/npm/bin` to our path so that npm-installed modules with executables will have them picked up.
-
-To do so, add this line to your `~/.path` file, before the `export PATH` line:
-
-```bash
-PATH=/usr/local/share/npm/bin:$PATH
-```
-        
-Open a new terminal for the `$PATH` changes to take effect.
-
-We also need to tell npm where to find the Xcode Command Line Tools, by running:
-
-    $ sudo xcode-select -switch /usr/bin
-
-Node modules are installed locally in the `node_modules` folder of each project by default, but there are at least two that are worth installing globally. Those are [CoffeeScript](http://coffeescript.org/) and [Grunt](http://gruntjs.com/):
-
-    $ npm install -g coffee-script
-    $ npm install -g grunt-cli
+    $ curl https://raw.githubusercontent.com/creationix/nvm/v0.7.0/install.sh | sh
+    $ nvm install 0.10
+    $ nvm alias default 0.10
 
 ### Npm usage
 
@@ -551,91 +273,7 @@ To upgrade all or a particular package:
 
 To uninstall a package:
 
-    $ npm uninstall <package>
-
-## Ruby and RVM
-
-Like Python, [Ruby](http://www.ruby-lang.org/) is already installed on Unix systems. But we don't want to mess around with that installation. More importantly, we want to be able to use the latest version of Ruby.
-
-### Install
-
-When installing Ruby, best practice is to use [RVM](https://rvm.io/) (Ruby Version Manager) which allows you to manage multiple versions of Ruby on the same machine. Installing RVM, as well as the latest version of Ruby, is very easy. Just run:
-
-    $ curl -L https://get.rvm.io | bash -s stable --ruby
-    
-When it is done, both RVM and a fresh version of Ruby 2.0 are installed. The following line was also automatically added to your `.bash_profile`:
-
-```bash
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-```
-
-I prefer to move that line to the `.extra` file, keeping my `.bash_profile` clean. I suggest you do the same.
-
-After that, start a new terminal and run:
-
-    $ type rvm | head -1
-    
-You should get the output `rvm is a function`.
-
-### Usage
-
-The following command will show you which versions of Ruby you have installed:
-
-    $ rvm list
-
-The one that was just installed, Ruby 2.0, should be set as default. When managing multiple versions, you switch between them with:
-
-    $ rvm use system # Switch back to system install (1.8)
-    $ rvm use 2.0.0 --default # Switch to 2.0.0 and sets it as default
-
-Run the following to make sure the version you want is being used (in our case, the just-installed Ruby 1.9.3):
-
-    $ which ruby
-    $ ruby --version
-
-You can install another version with:
-
-    $ rvm install 1.9.3
-
-To update RVM itself, use:
-
-    $ rvm get stable
-    
-[RubyGems](http://rubygems.org/), the Ruby package manager, was also installed:
-
-    $ which gem
-    
-Update to its latest version with:
-
-    $ gem update --system
-    
-To install a "gem" (Ruby package), run:
-
-    $ gem install <gemname>
-        
-To install without generating the documentation for each gem (faster):
-
-    $ gem install <gemname> --no-document
-        
-To see what gems you have installed:
-
-    $ gem list
-    
-To check if any installed gems are outdated:
-
-    $ gem outdated
-    
-To update all gems or a particular gem:
-
-    $ gem update [<gemname>]
-    
-RubyGems keeps old versions of gems, so feel free to do come cleaning after updating:
-
-    $ gem cleanup
-    
-I mainly use Ruby for the CSS pre-processor [Compass](http://compass-style.org/), which is built on top of [Sass](http://sass-lang.com/):
-
-    $ gem install compass --no-document
+    $ npm uninstall <package>`
 
 ## LESS
 
@@ -763,77 +401,3 @@ In another terminal, connect to the server with the Redis command-line interface
     $ redis-cli
 
 I'll let you refer to Redis' [documentation](http://redis.io/documentation) or other tutorials for more information.
-
-## Elasticsearch
-
-As it says on the box, [Elasticsearch](http://www.elasticsearch.org/) is a "powerful open source, distributed real-time search and analytics engine". It uses an HTTP REST API, making it really easy to work with from any programming language.
-
-You can use elasticsearch for such cool things as real-time search results, autocomplete, recommendations, machine learning, and more.
-
-### Install
-
-Elasticsearch runs on Java, so check if you have it installed by running:
-
-```bash
-java -version
-```
-
-If Java isn't installed yet, a window will appear prompting you to install it. Go ahead and click "Install".
-
-Next, install elasticsearch with:
-
-```bash
-$ brew install elasticsearch
-```
-
-**Note**: Elasticsearch also has a `plugin` program that gets moved to your `PATH`. I find that too generic of a name, so I rename it to `elasticsearch-plugin` by running (will need to do that again if you update elasticsearch):
-
-```bash
-$ mv /usr/local/bin/plugin /usr/local/bin/elasticsearch-plugin
-```
-
-Below I will use `elasticsearch-plugin`, just replace it with `plugin` if you haven't followed this step.
-
-As you guessed, you can add plugins to elasticsearch. A popular one is [elasticsearch-head](http://mobz.github.io/elasticsearch-head/), which gives you a web interface to the REST API. Install it with:
-
-```bash
-$ elasticsearch-plugin --install mobz/elasticsearch-head
-```
-
-### Usage
-
-Start a local elasticsearch server with:
-
-```bash
-$ elasticsearch -f
-```
-
-(The `-f` option tells it to run in the foreground, so you can stop it with `Ctrl+C`.)
-
-Test that the server is working correctly by running:
-
-```bash
-$ curl -XGET 'http://localhost:9200/'
-```
-
-If you installed the elasticsearch-head plugin, you can visit its interface at `http://localhost:9200/_plugin/head/`.
-
-Elasticsearch's [documentation](http://www.elasticsearch.org/guide/) is more of a reference. To get started, I suggest reading some of the blog posts linked on this [StackOverflow answer](http://stackoverflow.com/questions/11593035/beginners-guide-to-elasticsearch/11767610#11767610).
-
-## Projects folder
-
-This really depends on how you want to organize your files, but I like to put all my version-controlled projects in `~/Projects`. Other documents I may have, or things not yet under version control, I like to put in `~/Dropbox` (if you have Dropbox installed), or `~/Documents`.
-
-## Apps
-
-Here is a quick list of some apps I use, and that you might find useful as well:
-
-- [Dropbox](https://www.dropbox.com/): File syncing to the cloud. I put all my documents in Dropbox. It syncs them to all my devices (laptop, mobile, tablet), and serves as a backup as well! **(Free for 2GB)**
-- [Google Drive](https://drive.google.com/): File syncing to the cloud too! I use Google Docs a lot to collaborate with others (edit a document with multiple people in real-time!), and sometimes upload other non-Google documents (pictures, etc.), so the app comes in handy for that. **(Free for 5GB)**
-- [1Password](https://agilebits.com/onepassword): Allows you to securely store your login and passwords. Even if you only use a few different passwords (they say you shouldn't!), this is really handy to keep track of all the accounts you sign up for! Also, they have a mobile app so you always have all your passwords with you (syncs with Dropbox). A little pricey though. There are free alternatives. **($50 for Mac app, $18 for iOS app)**
-- [Marked](http://markedapp.com/): As a developer, most of the stuff you write ends up being in [Markdown](http://daringfireball.net/projects/markdown/). In fact, this `README.md` file (possibly the most important file of a GitHub repo) is indeed in Markdown, written in Sublime Text, and I use Marked to preview the results everytime I save. **($4)**
-- [Path Finder](http://cocoatech.com/pathfinder/): I love OSX, it's Unix so great for developers, and all of it just works and looks pretty! Only thing I "miss" from Windows (OMG what did he say?), is a decent file explorer. I think Finder is a pain to use. So I gladly paid for this alternative, but I understand others might find it expensive just to not have to use Finder. **($40)**
-- [Evernote](https://evernote.com/): If I don't write something down, I'll forget it. As a developer, you learn so many new things every day, and technology keeps changing, it would be insane to want to keep it all in your head. So take notes, sync them to the cloud, and have them on all your devices. To be honest, I switched to [Simplenote](http://simplenote.com/) because I only take text notes, and I got tired of Evernote putting extra spaces between paragraphs when I copy & pasted into other applications. Simplenote is so much better for text notes (and it supports Markdown!). **(Both are free)**
-- [Moom](http://manytricks.com/moom/): Don't waste time resizing and moving your windows. Moom makes this very easy. **($10)**
-
-
