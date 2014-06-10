@@ -12,6 +12,7 @@ The document assumes you are new to Mac. The steps below were tested on **OS X M
 - [Consolas](#consolas)
 - [Beautiful terminal](#beautiful-terminal)
 - [Git](#git)
+- [Git-Flow](#git-flow)
 - [Sublime Text](#sublime-text)
 - [Node.js](#nodejs)
 - [LESS](#less)
@@ -195,6 +196,13 @@ To push code to your GitHub repositories, we're going to use the recommended HTT
     
 **Note**: On a Mac, it is important to remember to add `.DS_Store` (a hidden OS X system file that's put in folders) to your `.gitignore` files. You can take a look at this repository's [.gitignore](/rfvgyhn/mac-dev-setup/blob/master/.gitignore) file for inspiration.
     
+## Git-Flow
+
+Git workflow [git-flow](https://github.com/nvie/gitflow)
+
+    $ brew update
+    $ brew install git-flow
+
 ## Sublime Text
 
 With the terminal, the text editor is a developer's most important tool. Everyone has their preferences, but unless you're a hardcore [Vim](http://en.wikipedia.org/wiki/Vim_(text_editor)) user, a lot of people are going to tell you that [Sublime Text](http://www.sublimetext.com/) is currently the best one out there.
