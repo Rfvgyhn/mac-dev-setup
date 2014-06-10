@@ -196,12 +196,35 @@ To push code to your GitHub repositories, we're going to use the recommended HTT
     
 **Note**: On a Mac, it is important to remember to add `.DS_Store` (a hidden OS X system file that's put in folders) to your `.gitignore` files. You can take a look at this repository's [.gitignore](/rfvgyhn/mac-dev-setup/blob/master/.gitignore) file for inspiration.
     
+### Bash Completion
+Adds git completion to shell.
+
+    $ brew update
+    $ brew install bash-completion
+
+
+Update `.bash_profile` to include
+
+```bash
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+fi
+```
+
+**Note**: The above snippet is already included in the `.bash_profile` within the repository.
+
 ## Git-Flow
 
 Git workflow [git-flow](https://github.com/nvie/gitflow)
 
     $ brew update
     $ brew install git-flow
+
+### Bash Completion
+Adds [git-flow completion](https://github.com/bobthecow/git-flow-completion) to shell. Requires git bash completion mentioned above.
+
+    $ mkdir ~/bash-completion.d
+    $ curl -o ~/bash-completion.d/git-flow-completion.bash https://raw.githubusercontent.com/bobthecow/git-flow-completion/master/git-flow-completion.bash
 
 ## Sublime Text
 
@@ -227,8 +250,9 @@ Just like the terminal, let's configure our editor a little. Go to **Sublime Tex
     "word_wrap": false,
     "indent_to_bracket": true
 }
+
 ```
-    
+
 Feel free to tweak these to your preference. When done, save the file and close it.
 
 Let's create a shortcut so we can launch Sublime Text from the command-line:
