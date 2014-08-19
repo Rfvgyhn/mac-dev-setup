@@ -19,6 +19,7 @@ The document assumes you are new to Mac. The steps below were tested on **OS X M
 - [Heroku](#heroku)
 - [MongoDB](#mongodb)
 - [Redis](#redis)
+- [7zip](#p7zip)
 
 ## System update
 
@@ -427,3 +428,20 @@ In another terminal, connect to the server with the Redis command-line interface
     $ redis-cli
 
 I'll let you refer to Redis' [documentation](http://redis.io/documentation) or other tutorials for more information.
+
+## p7zip
+
+[p7zip](http://p7zip.sourceforge.net/) is a port of 7za.exe for POSIX systems like Unix (Linux, Solaris, OpenBSD, FreeBSD, Cygwin, AIX, ...), MacOS X and also for BeOS and Amiga.
+
+### Install
+
+To install p7zip, use Homebrew:
+
+    $brew update
+    $brew install p7zip
+    
+### Usage
+
+Extract
+
+    $ 7za x archive.7z -o/OutputDir
