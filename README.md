@@ -437,8 +437,8 @@ I'll let you refer to Redis' [documentation](http://redis.io/documentation) or o
 
 To install p7zip, use Homebrew:
 
-    $brew update
-    $brew install p7zip
+    $ brew update
+    $ brew install p7zip
     
 ### Usage
 
