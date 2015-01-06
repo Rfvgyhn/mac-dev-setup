@@ -9,6 +9,7 @@ The document assumes you are new to Mac. The steps below were tested on **OS X M
 - [Google Chrome](#google-chrome)
 - [iTerm2](#iterm2)
 - [Homebrew](#homebrew)
+- [Cask](#cask)
 - [Consolas](#consolas)
 - [Beautiful terminal](#beautiful-terminal)
 - [Git](#git)
@@ -20,6 +21,7 @@ The document assumes you are new to Mac. The steps below were tested on **OS X M
 - [MongoDB](#mongodb)
 - [Redis](#redis)
 - [7zip](#p7zip)
+- [Synergy](#synergy)
 
 ## System update
 
@@ -35,26 +37,6 @@ In **Apple Icon > System Preferences**:
 - Keyboard > Key Repeat > Fast (all the way to the right)
 - Keyboard > Delay Until Repeat > Short (all the way to the right)
 - Dock > Automatically hide and show the Dock
-
-## Google Chrome
-
-Install your favorite browser, mine happens to be Chrome.
-
-Download from [www.google.com/chrome](https://www.google.com/intl/en/chrome/browser/). Open the **.dmg** file once it's done downloading (this will mount the disk image), and drag and drop the **Google Chrome** app into the Applications folder (on the Mac, most applications are installed this way). When done, you can unmount the disk in Finder (the small "eject" icon next to the disk under **Devices**).
-
-## iTerm2
-
-Since we're going to be spending a lot of time in the command-line, let's install a better terminal than the default one. Download and install [iTerm2](http://www.iterm2.com/) (the newest version, even if it says "beta release").
-
-In **Finder**, drag and drop the **iTerm** Application file into the **Applications** folder.
-
-You can now launch iTerm, through the **Launchpad** for instance.
-
-Let's just quickly change some preferences. In **iTerm > Preferences...**, under the tab **General**, uncheck **Confirm closing multiple sessions** and **Confirm "Quit iTerm2 (Cmd+Q)" command** under the section **Closing**.
-
-In the tab **Profiles**, create a new one with the "+" icon, and rename it to your first name for example. Then, select **Other Actions... > Set as Default**. Finally, under the section **Window**, change the size to something better, like **Columns: 125** and **Rows: 35**.
-
-When done, hit the red "X" in the upper left (saving is automatic in OS X preference panes). Close the window and open a new one to see the size change.
 
 ## Homebrew
 
@@ -113,6 +95,34 @@ Homebrew keeps older versions of packages installed, in case you want to roll ba
 To see what you have installed (with their version numbers):
 
     $ brew list --versions
+
+## Cask
+[Home-brew Cask](http://caskroom.io) extends Homebrew and brings its elegance, simplicity, and speed to OS X applications and large binaries alike.
+
+### Install
+    $ brew install caskroom/cask/brew-cask
+    
+### Usage
+    $ brew cask install app_name
+
+## Google Chrome
+
+Install your favorite browser, mine happens to be Chrome.
+
+    $ brew cask install google-chrome
+
+## iTerm2
+
+Since we're going to be spending a lot of time in the command-line, let's install a better terminal than the default one.
+
+### Install
+    $ brew cask install iterm2
+
+Let's just quickly change some preferences. In **iTerm > Preferences...**, under the tab **General**, uncheck **Confirm closing multiple sessions** and **Confirm "Quit iTerm2 (Cmd+Q)" command** under the section **Closing**.
+
+In the tab **Profiles**, create a new one with the "+" icon, and rename it to your first name for example. Then, select **Other Actions... > Set as Default**. Finally, under the section **Window**, change the size to something better, like **Columns: 125** and **Rows: 35**.
+
+When done, hit the red "X" in the upper left (saving is automatic in OS X preference panes). Close the window and open a new one to see the size change.
 
 ## Consolas
 
@@ -231,9 +241,11 @@ Adds [git-flow completion](https://github.com/bobthecow/git-flow-completion) to 
 
 With the terminal, the text editor is a developer's most important tool. Everyone has their preferences, but unless you're a hardcore [Vim](http://en.wikipedia.org/wiki/Vim_(text_editor)) user, a lot of people are going to tell you that [Sublime Text](http://www.sublimetext.com/) is currently the best one out there.
 
-Go ahead and [download](http://www.sublimetext.com/) it. Open the **.dmg** file, drag-and-drop in the **Applications** folder, you know the drill now. Launch the application.
+### Install
+    $ brew cask install sublime-text
 
-**Note**: At this point I'm going to create a shorcut on the OS X Dock for both for Sublime Text and iTerm. To do so, right-click on the running application and select **Options > Keep in Dock**.
+### Configure
+**Note**: At this point I'm going to create a shorcut on the OS X Dock for both for Sublime Text and iTerm. To do so, run sublime, right-click on the running application and select **Options > Keep in Dock**.
 
 Sublime Text is not free, but I think it has an unlimited "evaluation period". Anyhow, we're going to be using it so much that even the seemingly expensive $60 price tag is worth every penny. If you can afford it, I suggest you [support](http://www.sublimetext.com/buy) this awesome tool. :)
 
@@ -445,3 +457,9 @@ To install p7zip, use Homebrew:
 Extract
 
     $ 7za x archive.7z -o/OutputDir
+    
+## Synergy
+Combine your desktop devices together in to one cohesive experience. [Synergy](http://synergy-project.org/) is software for sharing your mouse and keyboard between multiple computers on your desk. It works on Windows, Mac OS X and Linux.
+
+### Install
+    $ brew cask install synergy
